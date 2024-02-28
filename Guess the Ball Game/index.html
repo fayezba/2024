@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the Ball Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
+  </head>
+  <body>
+    <div class="containerGame" id="containerGame">
+      <img src="Red-Ball.png" alt="c" class="ball" id="ball" />
+      <img src="cup.png" alt="cup.png" class="cup2" id="cup2" />
+      <img src="cup.png" alt="cup.png" class="cup3" id="cup3" />
+      <img src="cup.png" alt="cup.png" class="cup1" id="cup1" />
+    </div>
+    <div class="winFail">
+      <img src="win.png" alt="" class="win" id="win" />
+      <img src="fail.png" alt="" class="fail" id="fail" />
+    </div>
+    <button id="btn" onclick="start()">Start</button>
+    <button id="btn2" onclick="refresh()">Retry</button>
+    <audio id="soundMv" src="push-object-over-table-113518.mp3"></audio>
+    <audio id="winS" src="win.mp3"></audio>
+    <audio id="failS" src="fail.mp3"></audio>
+    <script>
+      function start() {
+        let cup1 = document.getElementById("cup1");
+
+        let cup2 = document.getElementById("cup2");
+
+        let cup3 = document.getElementById("cup3");
+        let start = document.getElementById("btn");
+        let ball = document.getElementById("ball");
+        cup1.style.animation = " BallCupAnimation 2s 1 ";
+        ball.style.left = "37%";
+        if (window.innerWidth <= 768) {
+          ball.style.top = "30%";
+        } else {
+          ball.style.top = "67%";
+        }
+        setTimeout(() => {
+          ball.style.display = "none";
+          roll();
+        }, 3000);
+      }
+      function roll() {
+        cup1.style.animation = " cup1Animation 2s 4 ";
+        cup2.style.animation = " cup2Animation 2s 4 ";
+        cup3.style.animation = " cup3Animation 2s 4 ";
+        btn.style.display = "none";
+        var soundMv = document.getElementById('soundMv');
+soundMv.play();
+soundMv.playbackRate = 4.0;
+setTimeout(() => {
+  soundMv.play();
+soundMv.playbackRate = 4.0;
+        }, 3500);
+        setTimeout(() => {
+          cup1.style.animation = "none";
+          cup2.style.animation = "none";
+          cup3.style.animation = "none";
+          ball.style.display = "block";
+          soundMv.pause();
+          rollStop();
+        }, 6000);
+      }
+      var x = Math.floor(Math.random() * 3) + 1;
+      var n = 0;
+      function rollStop() {
+        console.log(x);
+
+        //lena bech n7l
+        if (x === 1) {
+          ball.style.left = "65%";
+          if (window.innerWidth <= 768) {
+            ball.style.top = "16%";
+          } else {
+            ball.style.top = "50%";
+          }
+          ball.style.zIndex = "0";
+        } else if (x === 2) {
+          ball.style.left = "37%";
+          if (window.innerWidth <= 768) {
+            ball.style.top = "22%";
+          } else {
+            ball.style.top = "64%";
+          }
+          ball.style.zIndex = "0";
+        } else {
+          ball.style.left = "11%";
+          if (window.innerWidth <= 768) {
+            ball.style.top = "16%";
+          } else {
+            ball.style.top = "50%";
+          }
+          ball.style.zIndex = "0";
+        }
+
+        setTimeout(() => {
+          open();
+        }, 500);
+      }
+
+      function open() {
+        let cup1 = document.getElementById("cup1");
+
+        let cup2 = document.getElementById("cup2");
+
+        let cup3 = document.getElementById("cup3");
+        document.getElementById("cup1").addEventListener("click", up1);
+        document.getElementById("cup2").addEventListener("click", up2);
+        document.getElementById("cup3").addEventListener("click", up3);
+        var o = 0;
+
+        function up1() {
+          n = 2;
+          o++;
+          if (o === 1) {
+            cup1.style.top = "-40%";
+            cup1.style.transform = "scale(0.85)";
+          }
+          document.getElementById("cup2").removeEventListener("click", up2);
+  document.getElementById("cup3").removeEventListener("click", up3);
+        }
+        function up2() {
+          n = 3;
+          o++;
+          if (o === 1) {
+            cup2.style.top = "-40%";
+            cup2.style.transform = "scale(0.85)";
+          }
+          document.getElementById("cup1").removeEventListener("click", up1);
+  document.getElementById("cup3").removeEventListener("click", up3);
+        }
+        function up3() {
+          n = 1;
+          o++;
+          if (o === 1) {
+            cup3.style.top = "-40%";
+            cup3.style.transform = "scale(0.85)";
+          }
+          document.getElementById("cup2").removeEventListener("click", up2);
+  document.getElementById("cup1").removeEventListener("click", up1);
+        }
+check();
+        setTimeout(() => {
+          cup1.style.top = "3%";
+          cup1.style.transform = "scale(1)";
+          cup2.style.top = "-8%";
+          cup2.style.transform = "scale(0.95)";
+          cup3.style.top = "-8%";
+          cup3.style.transform = "scale(0.95)";
+
+          rollStop();
+        }, 6000);
+        console.log(n)
+      }
+
+      function check(){
+        if (x === n) {
+          document.getElementById("win").style.display = "block";
+          document.getElementById("win").style.animation = "winAnimation 2s 1";
+          document.getElementById("containerGame").style.display = "none";
+          var winS = document.getElementById('winS');
+winS.play();
+        } if (x !== n && n !== 0) {
+          document.getElementById("fail").style.display = "block";
+          document.getElementById("fail").style.animation = "winAnimation 2s 1";
+          document.getElementById("containerGame").style.display = "none";
+          var failS = document.getElementById('failS');
+failS.play();
+        }
+     
+        setTimeout(() => {
+          document.getElementById("btn2").style.display = "block";
+        }, 6000);
+      }
+      function refresh() {
+        location.reload();
+      }
+    </script>
+  </body>
+</html>

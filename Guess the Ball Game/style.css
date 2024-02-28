@@ -1,0 +1,253 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('book_pattern_col1_1k.png');
+  }
+  
+  .containerGame {
+    position: fixed;
+    display: flex;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 3%;
+    align-items: center;
+    justify-content: center;
+  }
+  #btn{
+position: absolute;
+left: 40%;
+width: 17%;
+height: 10%;
+top: 85%;
+font-weight: 900;
+font-size: 20px;
+background-color: yellow;
+border-radius: 20px;
+text-align: center;
+color: rgb(0, 0, 0);
+border: none;
+  }
+  #btn2{
+display: none;
+position: absolute;
+left: 40%;
+width: 17%;
+height: 10%;
+top: 85%;
+font-weight: 900;
+font-size: 20px;
+background-color: yellow;
+border-radius: 20px;
+text-align: center;
+color: rgb(0, 0, 0);
+border: none;
+
+
+  }
+  .cup1 {
+    position: absolute;
+    filter: drop-shadow(3px 10px 10px rgba(0, 0, 0, 0.747));
+width: 40%;
+  transform: scale(1); 
+    z-index: 1;
+    transition: 2s all;
+  opacity: 1;
+  left: 32%;
+  top: 3%;
+  }
+  
+  .cup2 {
+    position: absolute;
+    width: 35%;
+    left: 5%;
+    transform: scale(0.95);
+    top: -8%;
+    filter: drop-shadow(3px 10px 10px rgba(0, 0, 0, 0.747)) ;
+    transition: transform 2s, filter 2s, right 2s, top 2s;
+    transition-delay: 2s;
+    transition: 2s all;
+    opacity: 1;
+  }
+  
+  .cup3 {
+    position: absolute;
+    width: 35%;
+    right: 5%;
+    transform: scale(0.95); 
+    top: -8%;
+    filter: drop-shadow(3px 10px 10px rgba(0, 0, 0, 0.747)) ; 
+    transition: 2s all;
+    opacity: 1;
+  }
+  @keyframes cup3Animation {
+    0% {
+      position: absolute;
+      right: 5%;
+      transform: scale(0.95);
+      top: -8%;
+
+    }
+   
+      25% {
+        position: absolute;
+        right: 58%;
+        transform: scale(0.95);
+        top: -8%;
+        z-index: 1;
+      }
+
+      80% {
+        position: absolute;
+        right: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+      }
+      100% {
+        position: absolute;
+        right: 5%;
+    transform: scale(0.95); 
+    top: -8%;
+  z-index: 1;
+      }
+  }
+
+
+  @keyframes cup2Animation {
+    0% {
+      position: absolute;
+      left: 5%;
+      transform: scale(0.95);
+      top: -8%;
+
+    }
+
+      25% {
+        position: absolute;
+      left: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+      }
+      80% {
+        position: absolute;
+      left: 58%;
+        transform: scale(0.95);
+        top: -8%;
+        z-index: 1;
+      }
+      100% {
+        position: absolute;
+      left: 5%;
+    transform: scale(0.95); 
+    top: -8%;
+  z-index: 1;
+      }
+  }
+
+  @keyframes cup1Animation {
+    0% {
+        position: absolute;
+      left: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+
+    }
+
+      25% {
+        position: absolute;
+      left: 58%;
+      transform: scale(0.85);
+      top: -8%;
+      z-index: 1;
+      }
+      80% {
+        position: absolute;
+        left: 5%;
+        transform: scale(0.85);
+        top: -8%;
+        z-index: 1;
+      }
+      100% {
+        position: absolute;
+      left: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+      }
+  }
+
+  @keyframes BallCupAnimation {
+    0% {
+        position: absolute;
+      left: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+
+    }
+
+      80% {
+        position: absolute;
+        left: 32%;
+        transform: scale(0.85);
+        top: -40%;
+        z-index: 1;
+      }
+      100% {
+        position: absolute;
+      left: 32%;
+    transform: scale(1); 
+    top: 3%;
+  z-index: 1;
+      }
+  }
+  
+  .ball{
+    position: absolute;
+    width: 20%;
+    left: 37%;
+    top: 70%;
+    z-index: 0;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.747)) ;
+  }
+
+.win{
+position: absolute;
+width: 40%;
+left: 30%;
+    top: 10%;
+    display:none ;
+}
+.fail{
+position: absolute;
+width: 40%;
+left: 30%;
+    top: 10%;
+display:none ;
+}
+
+@keyframes winAnimation {
+  0% {
+  transform: scale(0.2); 
+  }
+
+    100% {
+  transform: scale(1); 
+
+
+    }
+}
+@media only screen and (max-width: 768px) {
+  .ball {
+    top: 16%;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .ball {
+    top: 70%;
+  }
+}
